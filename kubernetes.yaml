@@ -32,6 +32,7 @@ spec:
       restartPolicy: Always
       containers:
       - imagePullPolicy: Always
+        tty: true
         image: gcr.io/green-buttress-260810/expo:alpha-v0.2
         name:  expo-ui
         resources:
