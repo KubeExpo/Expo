@@ -1,16 +1,3 @@
-kind: Service
-apiVersion: v1
-metadata:
-  name:  expo-ui-service
-spec:
-  selector:
-    app:  expo-ui
-  type:  NodePort
-  ports:
-  - name:  http
-    port:  80
-    targetPort:  80
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -28,6 +15,7 @@ spec:
     metadata:
       labels:
         name:  expo-ui
+        app : expo-ui
     spec:
       restartPolicy: Always
       containers:
@@ -64,3 +52,16 @@ spec:
       #   - name: data
       #     emptyDir: {}
       
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name:  expo-ui-service
+spec:
+  selector:
+    app:  expo-ui
+  type:  NodePort
+  ports:
+  - name:  http
+    port:  80
+    targetPort:  80
