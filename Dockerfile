@@ -19,6 +19,7 @@ COPY .  /app
 RUN cd /app && npm run build
 
 # Build a small nginx image with static website
+<<<<<<< HEAD
 # FROM nginx:alpine
 FROM nginx:1.17.3
 RUN rm -rf /usr/share/nginx/html/*
@@ -27,3 +28,13 @@ COPY --from=builder /app/dist/expo /usr/share/nginx/html
 # RUN chown nginx:nginx /usr/share/nginx/html
 EXPOSE 80
 # CMD ["nginx", "-g", "daemon off;"]
+=======
+#FROM nginx:alpine
+FROM nginx:1.17.3
+RUN rm -rf /usr/share/nginx/html/*
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=builder /app/dist/Expo /usr/share/nginx/html
+#RUN chown nginx:nginx /usr/share/nginx/html
+EXPOSE 80
+#CMD ["nginx", "-g", "daemon off;"]
+>>>>>>> b26a8530b58e3a2d0ec4bc61c74e071b7cab429d
