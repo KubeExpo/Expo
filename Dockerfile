@@ -23,7 +23,7 @@ RUN cd /app && npm run build
 FROM nginx:1.17.3
 RUN rm -rf /usr/share/nginx/html/*
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY --from=builder /app/dist/expo /usr/share/nginx/html
+COPY --from=builder /app/dist/Expo /usr/share/nginx/html
 # RUN chown nginx:nginx /usr/share/nginx/html
 EXPOSE 80
 # CMD ["nginx", "-g", "daemon off;"]
